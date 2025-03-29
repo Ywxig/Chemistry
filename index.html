@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doc</title>
+</head>
+
+<style>
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #121212;
+    color: #e0e0e0;
+    margin: 0;
+    padding: 20px;
+}
+
+.content {
+    background-color: #1e1e1e;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.btn {
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 6px 3px;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.btn:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+.btn:active {
+    background-color: #004494;
+    transform: scale(0.95);
+}
+
+</style>
+
+    <script>
+
+QUASTIONS = [
+    {
+        numberOfQuestion: "01",
+        type: "choice",
+        HTML: "<h1>Цвет лакмуса в кислотах с pH больше 7</h1> <br> <button class='btn' onclick='answers(\"01\", \"Красный\")'>Красный</button><button class='btn' onclick='answers(\"01\", \"Синий\")'>Синий</button><button class='btn' onclick='answers(\"01\", \"Зеленый\")'>Зеленый</button><button class='btn' onclick='answers(\"01\", \"Желтый\")'>Желтый</button>",
+        answers: [
+            { text: "Красный", isRight: false },
+            { text: "Синий", isRight: true },
+            { text: "Зеленый", isRight: false },
+            { text: "Желтый", isRight: false }
+        ]
+    },
+    {
+        numberOfQuestion: "02",
+        type: "choice",
+        HTML: "<h1>Какой газ необходим для дыхания человека?</h1> <br> <button class='btn' onclick='answers(\"02\", \"Кислород\")'>Кислород</button><button class='btn' onclick='answers(\"02\", \"Углекислый газ\")'>Углекислый газ</button><button class='btn' onclick='answers(\"02\", \"Азот\")'>Азот</button><button class='btn' onclick='answers(\"02\", \"Водород\")'>Водород</button>",
+        answers: [
+            { text: "Кислород", isRight: true },
+            { text: "Углекислый газ", isRight: false },
+            { text: "Азот", isRight: false },
+            { text: "Водород", isRight: false }
+        ]
+    },
+    {
+        numberOfQuestion: "03",
+        type: "choice",
+        HTML: "<h1>Какое вещество является основным компонентом костей?</h1> <br> <button class='btn' onclick='answers(\"03\", \"Гидроксид кальция\")'>Гидроксид кальция</button><button class='btn' onclick='answers(\"03\", \"Фосфат кальция\")'>Фосфат кальция</button><button class='btn' onclick='answers(\"03\", \"Оксид кальция\")'>Оксид кальция</button><button class='btn' onclick='answers(\"03\", \"Хлорид кальция\")'>Хлорид кальция</button>",
+        answers: [
+            { text: "Гидроксид кальция", isRight: false },
+            { text: "Фосфат кальция", isRight: true },
+            { text: "Оксид кальция", isRight: false },
+            { text: "Хлорид кальция", isRight: false }
+        ]
+    },
+    {
+        numberOfQuestion: "04",
+        type: "choice",
+        HTML: "<h1>Какой металл жидкий при комнатной температуре?</h1> <br> <button class='btn' onclick='answers(\"04\", \"Железо\")'>Железо</button><button class='btn' onclick='answers(\"04\", \"Медь\")'>Медь</button><button class='btn' onclick='answers(\"04\", \"Ртуть\")'>Ртуть</button><button class='btn' onclick='answers(\"04\", \"Свинец\")'>Свинец</button>",
+        answers: [
+            { text: "Железо", isRight: false },
+            { text: "Медь", isRight: false },
+            { text: "Ртуть", isRight: true },
+            { text: "Свинец", isRight: false }
+        ]
+    },
+    {
+        numberOfQuestion: "05",
+        type: "choice",
+        HTML: "<h1>Какой химический элемент обозначается символом 'Na'?</h1> <br> <button class='btn' onclick='answers(\"05\", \"Калий\")'>Калий</button><button class='btn' onclick='answers(\"05\", \"Натрий\")'>Натрий</button><button class='btn' onclick='answers(\"05\", \"Магний\")'>Магний</button><button class='btn' onclick='answers(\"05\", \"Никель\")'>Никель</button>",
+        answers: [
+            { text: "Калий", isRight: false },
+            { text: "Натрий", isRight: true },
+            { text: "Магний", isRight: false },
+            { text: "Никель", isRight: false }
+        ]
+    },
+    {
+        numberOfQuestion: "06",
+        type: "choice",
+        HTML: "<h1>Какой элемент является основой органической химии?</h1> <br> <button class='btn' onclick='answers(\"06\", \"Кислород\")'>Кислород</button><button class='btn' onclick='answers(\"06\", \"Углерод\")'>Углерод</button><button class='btn' onclick='answers(\"06\", \"Азот\")'>Азот</button><button class='btn' onclick='answers(\"06\", \"Водород\")'>Водород</button>",
+        answers: [
+            { text: "Кислород", isRight: false },
+            { text: "Углерод", isRight: true },
+            { text: "Азот", isRight: false },
+            { text: "Водород", isRight: false }
+        ]
+    },
+    {
+        numberOfQuestion: "07",
+        type: "choice",
+        HTML: "<h1>Как называется процесс образования сложных органических соединений из простых?</h1> <br> <button class='btn' onclick='answers(\"07\", \"Гидролиз\")'>Гидролиз</button><button class='btn' onclick='answers(\"07\", \"Полимеризация\")'>Полимеризация</button><button class='btn' onclick='answers(\"07\", \"Изомеризация\")'>Изомеризация</button><button class='btn' onclick='answers(\"07\", \"Деструкция\")'>Деструкция</button>",
+        answers: [
+            { text: "Гидролиз", isRight: false },
+            { text: "Полимеризация", isRight: true },
+            { text: "Изомеризация", isRight: false },
+            { text: "Деструкция", isRight: false }
+        ]
+    },
+    {
+        numberOfQuestion: "08",
+        type: "choice",
+        HTML: "<h1>Какие соединения являются изомерами?</h1> <br> <button class='btn' onclick='answers(\"08\", \"Этан и этилен\")'>Этан и этилен</button><button class='btn' onclick='answers(\"08\", \"Пропан и бутан\")'>Пропан и бутан</button><button class='btn' onclick='answers(\"08\", \"Этанол и диметиловый эфир\")'>Этанол и диметиловый эфир</button><button class='btn' onclick='answers(\"08\", \"Метан и бензол\")'>Метан и бензол</button>",
+        answers: [
+            { text: "Этан и этилен", isRight: false },
+            { text: "Пропан и бутан", isRight: false },
+            { text: "Этанол и диметиловый эфир", isRight: true },
+            { text: "Метан и бензол", isRight: false }
+        ]
+    },
+    {
+        numberOfQuestion: "09",
+        type: "choice",
+        HTML: "<h1>Какой элемент является основным компонентом белков?</h1> <br> <button class='btn' onclick='answers(\"09\", \"Углерод\")'>Углерод</button><button class='btn' onclick='answers(\"09\", \"Азот\")'>Азот</button><button class='btn' onclick='answers(\"09\", \"Кислород\")'>Кислород</button><button class='btn' onclick='answers(\"09\", \"Сера\")'>Сера</button>",
+        answers: [
+            { text: "Углерод", isRight: false },
+            { text: "Азот", isRight: true },
+            { text: "Кислород", isRight: false },
+            { text: "Сера", isRight: false }
+        ]
+    },
+    {
+        numberOfQuestion: "10",
+        type: "choice",
+        HTML: "<h1>Какой элемент является основным компонентом жиров?</h1> <br> <button class='btn' onclick='answers(\"10\", \"Углерод\")'>Углерод</button><button class='btn' onclick='answers(\"10\", \"Азот\")'>Азот</button><button class='btn' onclick='answers(\"10\", \"Кислород\")'>Кислород</button><button class='btn' onclick='answers(\"10\", \"Водород\")'>Водород</button>",
+        answers: [
+            { text: "Углерод", isRight: false },
+            { text: "Азот", isRight: false },
+            { text: "Кислород", isRight: false },
+            { text: "Водород", isRight: true }
+        ]
+    },
+    {
+        numberOfQuestion: "11",
+        type: "choice",
+        HTML: "<h1>Является металическим элементом побочной подгруппы</h1> <br> <button class='btn' onclick='answers(\"11\", \"Mn\")'>Mn</button><button class='btn' onclick='answers(\"11\", \"Se\")'>Se</button><button class='btn' onclick='answers(\"11\", \"Mg\")'>Mg</button><button class='btn' onclick='answers(\"11\", \"N\")'>N</button>",
+        answers: [
+            { text: "N", isRight: false },
+            { text: "Mg", isRight: false },
+            { text: "Se", isRight: false },
+            { text: "Mn", isRight: true }
+        ]
+    },
+    {
+        numberOfQuestion: "12",
+        type: "choice",
+        HTML: "<h1>Из чего состоит ядро атома?</h1> <br> <button class='btn' onclick='answers(\"12\", \"Протонов и нейтронов\")'>Протонов и нейтронов</button><button class='btn' onclick='answers(\"12\", \"Электронов и протонов\")'>Электронов и протонов</button><button class='btn' onclick='answers(\"12\", \"Только протонов\")'>Только протонов</button><button class='btn' onclick='answers(\"12\", \"Только нейтронов\")'>Только нейтронов</button>",
+        answers: [
+            { text: "Протонов и нейтронов", isRight: true },
+            { text: "Электронов и протонов", isRight: false },
+            { text: "Только протонов", isRight: false },
+            { text: "Только нейтронов", isRight: false }
+        ]
+    },
+    {
+        numberOfQuestion: "13",
+        type: "choice",
+        HTML: "<h1>Какая частица атома не имеет электрического заряда?</h1> <br> <button class='btn' onclick='answers(\"13\", \"Протон\")'>Протон</button><button class='btn' onclick='answers(\"13\", \"Нейтрон\")'>Нейтрон</button><button class='btn' onclick='answers(\"13\", \"Электрон\")'>Электрон</button><button class='btn' onclick='answers(\"13\", \"Позитрон\")'>Позитрон</button>",
+        answers: [
+            { text: "Протон", isRight: false },
+            { text: "Нейтрон", isRight: true },
+            { text: "Электрон", isRight: false },
+            { text: "Позитрон", isRight: false }
+        ]
+    },
+    {
+        numberOfQuestion: "14",
+        type: "choice",
+        HTML: "<h1>Какая элементарная частица имеет наименьшую массу?</h1> <br> <button class='btn' onclick='answers(\"14\", \"Протон\")'>Протон</button><button class='btn' onclick='answers(\"14\", \"Нейтрон\")'>Нейтрон</button><button class='btn' onclick='answers(\"14\", \"Электрон\")'>Электрон</button><button class='btn' onclick='answers(\"14\", \"Альфа-частица\")'>Альфа-частица</button>",
+        answers: [
+            { text: "Протон", isRight: false },
+            { text: "Нейтрон", isRight: false },
+            { text: "Электрон", isRight: true },
+            { text: "Альфа-частица", isRight: false }
+        ]
+    },
+    {
+        numberOfQuestion: "15",
+        type: "choice",
+        HTML: "<h1>Как называется число протонов в ядре атома?</h1> <br> <button class='btn' onclick='answers(\"15\", \"Массовое число\")'>Массовое число</button><button class='btn' onclick='answers(\"15\", \"Атомный номер\")'>Атомный номер</button><button class='btn' onclick='answers(\"15\", \"Число нейтронов\")'>Число нейтронов</button><button class='btn' onclick='answers(\"15\", \"Орбитальное число\")'>Орбитальное число</button>",
+        answers: [
+            { text: "Массовое число", isRight: false },
+            { text: "Атомный номер", isRight: true },
+            { text: "Число нейтронов", isRight: false },
+            { text: "Орбитальное число", isRight: false }
+        ]
+    },
+    {
+        numberOfQuestion: "16",
+        type: "choice",
+        HTML: "<h1>Что определяет химические свойства элемента?</h1> <br> <button class='btn' onclick='answers(\"16\", \"Число нейтронов\")'>Число нейтронов</button><button class='btn' onclick='answers(\"16\", \"Число электронов на внешнем уровне\")'>Число электронов на внешнем уровне</button><button class='btn' onclick='answers(\"16\", \"Массовое число\")'>Массовое число</button><button class='btn' onclick='answers(\"16\", \"Число изотопов\")'>Число изотопов</button>",
+        answers: [
+            { text: "Число нейтронов", isRight: false },
+            { text: "Число электронов на внешнем уровне", isRight: true },
+            { text: "Массовое число", isRight: false },
+            { text: "Число изотопов", isRight: false }
+        ]
+    },
+    {
+        numberOfQuestion: "17",
+        type: "choice",
+        HTML: "<h1>Как называется область вокруг ядра, в которой наиболее вероятно находится электрон?</h1> <br> <button class='btn' onclick='answers(\"17\", \"Орбиталь\")'>Орбиталь</button><button class='btn' onclick='answers(\"17\", \"Валентный уровень\")'>Валентный уровень</button><button class='btn' onclick='answers(\"17\", \"Электронное облако\")'>Электронное облако</button><button class='btn' onclick='answers(\"17\", \"Радиус атома\")'>Радиус атома</button>",
+        answers: [
+            { text: "Орбиталь", isRight: true },
+            { text: "Валентный уровень", isRight: false },
+            { text: "Электронное облако", isRight: false },
+            { text: "Радиус атома", isRight: false }
+        ]
+    },
+    {
+        numberOfQuestion: "18",
+        type: "choice",
+        HTML: "<h1>Какой заряд имеет атом в нейтральном состоянии?</h1> <br> <button class='btn' onclick='answers(\"18\", \"Положительный\")'>Положительный</button><button class='btn' onclick='answers(\"18\", \"Отрицательный\")'>Отрицательный</button><button class='btn' onclick='answers(\"18\", \"Нулевой\")'>Нулевой</button><button class='btn' onclick='answers(\"18\", \"Переменный\")'>Переменный</button>",
+        answers: [
+            { text: "Положительный", isRight: false },
+            { text: "Отрицательный", isRight: false },
+            { text: "Нулевой", isRight: true },
+            { text: "Переменный", isRight: false }
+        ]
+    },
+    {
+        numberOfQuestion: "19",
+        type: "choice",
+        HTML: "<h1>Как называется модель атома, предложенная Нильсом Бором?</h1> <br> <button class='btn' onclick='answers(\"19\", \"Планетарная модель\")'>Планетарная модель</button><button class='btn' onclick='answers(\"19\", \"Твёрдое тело атома\")'>Твёрдое тело атома</button><button class='btn' onclick='answers(\"19\", \"Молекулярная модель\")'>Молекулярная модель</button><button class='btn' onclick='answers(\"19\", \"Энергетическая модель\")'>Энергетическая модель</button>",
+        answers: [
+            { text: "Планетарная модель", isRight: true },
+            { text: "Твёрдое тело атома", isRight: false },
+            { text: "Молекулярная модель", isRight: false },
+            { text: "Энергетическая модель", isRight: false }
+        ]
+    },
+    {
+        numberOfQuestion: "20",
+        type: "choice",
+        HTML: "<h1>Что определяет химическую активность атома?</h1> <br> <button class='btn' onclick='answers(\"20\", \"Число протонов\")'>Число протонов</button><button class='btn' onclick='answers(\"20\", \"Число нейтронов\")'>Число нейтронов</button><button class='btn' onclick='answers(\"20\", \"Число электронов на внешнем уровне\")'>Число электронов на внешнем уровне</button><button class='btn' onclick='answers(\"20\", \"Масса атома\")'>Масса атома</button>",
+        answers: [
+            { text: "Число протонов", isRight: false },
+            { text: "Число нейтронов", isRight: false },
+            { text: "Число электронов на внешнем уровне", isRight: true },
+            { text: "Масса атома", isRight: false }
+        ]
+    },
+    {
+        numberOfQuestion: "21",
+        type: "choice",
+        HTML: "<h1>Как называется энергия, которую атом может поглотить для перехода на более высокую орбиталь?</h1> <br> <button class='btn' onclick='answers(\"21\", \"Энергия ионизации\")'>Энергия ионизации</button><button class='btn' onclick='answers(\"21\", \"Энергия возбуждения\")'>Энергия возбуждения</button><button class='btn' onclick='answers(\"21\", \"Энергия связи\")'>Энергия связи</button><button class='btn' onclick='answers(\"21\", \"Энергия диссоциации\")'>Энергия диссоциации</button>",
+        answers: [
+            { text: "Энергия ионизации", isRight: false },
+            { text: "Энергия возбуждения", isRight: true },
+            { text: "Энергия связи", isRight: false },
+            { text: "Энергия диссоциации", isRight: false }
+        ]
+    },
+    {
+        numberOfQuestion: "22",
+        type: "choice",
+        HTML: "<h1>Как называется процесс выделения или поглощения света атомом при переходе электрона на другую орбиталь?</h1> <br> <button class='btn' onclick='answers(\"22\", \"Спектроскопия\")'>Спектроскопия</button><button class='btn' onclick='answers(\"22\", \"Фотосинтез\")'>Фотосинтез</button><button class='btn' onclick='answers(\"22\", \"Эмиссия\")'>Эмиссия</button><button class='btn' onclick='answers(\"22\", \"Ионизация\")'>Ионизация</button>",
+        answers: [
+            { text: "Спектроскопия", isRight: false },
+            { text: "Фотосинтез", isRight: false },
+            { text: "Эмиссия", isRight: true },
+            { text: "Ионизация", isRight: false }
+        ]
+    },
+    {
+        numberOfQuestion: "23",
+        type: "choice",
+        HTML: "<h1>Как называется количество вещества, содержащее столько атомов, сколько атомов в 12 граммах углерода?</h1> <br> <button class='btn' onclick='answers(\"23\", \"Моль\")'>Моль</button><button class='btn' onclick='answers(\"23\", \"Грамм\")'>Грамм</button><button class='btn' onclick='answers(\"23\", \"Килограмм\")'>Килограмм</button><button class='btn' onclick='answers(\"23\", \"Миллилитр\")'>Миллилитр</button>",
+        answers: [
+            { text: "Моль", isRight: true },
+            { text: "Грамм", isRight: false },
+            { text: "Килограмм", isRight: false },
+            { text: "Миллилитр", isRight: false }
+        ]
+    },
+    {
+        numberOfQuestion: "24",
+        type: "choice",
+        HTML: "<h1>Какой элемент имеет атомный номер 1?</h1> <br> <button class='btn' onclick='answers(\"24\", \"Водород\")'>Водород</button><button class='btn' onclick='answers(\"24\", \"Гелий\")'>Гелий</button><button class='btn' onclick='answers(\"24\", \"Кислород\")'>Кислород</button><button class='btn' onclick='answers(\"24\", \"Углерод\")'>Углерод</button>",
+        answers: [
+            { text: "Водород", isRight: true },
+            { text: "Гелий", isRight: false },
+            { text: "Кислород", isRight: false },
+            { text: "Углерод", isRight: false }
+        ]
+    },
+    {
+        numberOfQuestion: "25",
+        type: "choice",
+        HTML: "<h1>Какой элемент является наиболее распространённым в земной коре?</h1> <br> <button class='btn' onclick='answers(\"25\", \"Кислород\")'>Кислород</button><button class='btn' onclick='answers(\"25\", \"Углерод\")'>Углерод</button><button class='btn' onclick='answers(\"25\", \"Азот\")'>Азот</button><button class='btn' onclick='answers(\"25\", \"Кальций\")'>Кальций</button>",
+        answers: [
+            { text: "Кислород", isRight: true },
+            { text: "Углерод", isRight: false },
+            { text: "Азот", isRight: false },
+            { text: "Кальций", isRight: false }
+        ]
+    },
+    {
+        numberOfQuestion: "26",
+        type: "choice",
+        HTML: "<h1>Какой элемент является основным компонентом атмосферы Земли?</h1> <br> <button class='btn' onclick='answers(\"26\", \"Кислород\")'>Кислород</button><button class='btn' onclick='answers(\"26\", \"Азот\")'>Азот</button><button class='btn' onclick='answers(\"26\", \"Углерод\")'>Углерод</button><button class='btn' onclick='answers(\"26\", \"Водород\")'>Водород</button>",
+        answers: [
+            { text: "Кислород", isRight: false },
+            { text: "Азот", isRight: true },
+            { text: "Углерод", isRight: false },
+            { text: "Водород", isRight: false }
+        ]
+    }
+];
+
+        function them(theme) {
+            // This function simulates changing the theme of the page
+            const body = document.querySelector('body');
+            if (theme === 'dark') {
+                body.style.backgroundColor = '#333';
+                body.style.color = '#fff';
+            } else {
+                body.style.backgroundColor = '#f4f4f4';
+                body.style.color = '#000';
+            }
+        }
+
+        function answers(numberOfQuestion, answer) {     
+            // This function simulates checking the answer by comparing it to the correct answer
+            const question = QUASTIONS.find(q => q.numberOfQuestion === numberOfQuestion);
+            const correctAnswer = question.answers.find(a => a.isRight).text;
+
+            if (answer === correctAnswer) {
+                alert("Correct!");
+                loadQuestion(); // Load a new question after answering correctly
+            } else {
+                alert("Incorrect! The correct answer is: " + correctAnswer);
+            }
+        }
+
+
+        function loadQuestion() {
+            // This function simulates loading a question by changing the content of the div with class 'content'
+            const content = document.querySelector('.content');
+
+            // choose a random question from the QUASTIONS array
+            const randomIndex = Math.floor(Math.random() * QUASTIONS.length);
+            const question = QUASTIONS[randomIndex];
+
+            // create a new string to hold the HTML content
+            let questionHTML = question.HTML;
+
+
+            content.innerHTML = questionHTML;
+        }
+
+        function pageLoad(PageName) {
+            // This function simulates loading a page by changing the content of the div with class 'content'
+            const content = document.querySelector('.content');
+            if (PageName === "home") {
+                content.innerHTML = '<h1>Home Page</h1><p>Welcome to the home page!</p>';
+            
+            } 
+            if (PageName === "about") {
+                content.innerHTML = '<h1>О приложении</h1><p>Это интерактивный опросник по химии, призван упростить подготовку к сдачи экзамена по химии на степень Бакалавра</p>';
+            } 
+
+            else {
+                content.innerHTML = '<h1>404 Not Found</h1><p>The page you are looking for does not exist.</p>';
+            }
+        }
+    </script>
+
+<body>
+    
+    <div class="content">
+        <h1>Welcome to Chimestry</h1>
+        <p></p>
+        <button class="btn" onclick='loadQuestion()'>Загрузить вопрос</button>
+        <button class="btn" onclick='pageLoad("about")'>о приложении</button>
+
+    </div>
+
+</body>
+</html>
